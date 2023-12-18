@@ -1,0 +1,4 @@
+util\ConexionDB.class
+controlador\registrarUsuarios.class
+dao\RegistrosDAO.class
+modelo\Registro.class

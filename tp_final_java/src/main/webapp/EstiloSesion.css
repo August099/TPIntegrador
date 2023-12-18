@@ -1,0 +1,57 @@
+.fondo{
+     
+    background: linear-gradient(rgba(214, 210, 210, 0.981) 6%, rgba(47, 47, 48, 0.967) 76%);
+
+}
+.btn{
+
+    background-color: rgb(26, 66, 94);
+    border: 2px solid rgb(22, 22, 138);
+
+}
+label{
+
+    text-shadow: 2px 2px 4px rgb(43, 42, 42);
+    font-size: x-large;
+
+}
+.form-control{
+
+    background: linear-gradient(rgb(105, 124, 207), rgb(59, 59, 197)) !important;
+    box-shadow: 3px 4px 5px rgb(26, 66, 94) !important;
+    color: rgb(255, 255, 255) !important;
+    font-size: large !important;
+
+}
+.input-group-text{
+
+    background: linear-gradient(rgb(151, 165, 226), rgb(109, 109, 197)) !important;
+    box-shadow: 4px 4px 5px rgb(26, 66, 94) !important;
+
+}
+.boton{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 10px;
+    top: 10px;
+    border: 0px;
+    background-size: cover;
+    background-image: url(flecha.png);
+    background-color: transparent;
+
+}
+@media screen and (max-width:767px){
+    .ruptura{
+
+        margin-left: 2% !important;
+
+    }
+    .row{
+
+        margin-top: 50px !important;
+
+    }
+
+}
+
