@@ -1,0 +1,8 @@
+util\ConexionDB.class
+dao\RegistrosDAO.class
+controlador\verificarSesion.class
+controlador\gestionar.class
+controlador\cambiarEstado.class
+controlador\registrarUsuarios.class
+controlador\cerrarSesion.class
+modelo\Registro.class
