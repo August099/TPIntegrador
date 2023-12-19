@@ -16,10 +16,6 @@ public class Registro {
     }
 
     // Getters y setters
-    // ...
-
-    // Resto de métodos y atributos
-    // ...
 
     public int getId() {
         return id;
@@ -70,16 +66,12 @@ public class Registro {
         this.fechaRegistro = fechaRegistro;
     }
 
-    /**
-     * @return the status
-     */
+    
     public String getStatus() {
         return status;
     }
 
-    /**
-     * @param status the status to set
-     */
+    
     public void setStatus(String status) {
         this.status = status;
     }

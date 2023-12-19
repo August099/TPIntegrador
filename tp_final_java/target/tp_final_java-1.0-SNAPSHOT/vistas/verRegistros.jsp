@@ -11,7 +11,18 @@
     </head>
     <body>
         <div class="container mt-5">
+            <%
+            if (session.getAttribute("usuario") != null){
+            %> 
+            <h2>Hola <%=session.getAttribute("usuario")%>, aqui tienes la lista de usuarios.</h2>
+            <%
+                }else{
+            %> 
             <h2>Lista de usuarios</h2>
+            <%
+                }
+            %> 
+            
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -25,14 +36,14 @@
                 </thead>
                 <tbody>
                     <%
-                        // Crear una instancia de OradoresDAO para acceder a la base de datos
+                        // Crear una instancia de registrosDAO para acceder a la base de datos
                         RegistrosDAO registrosDAO = new RegistrosDAO();
 
-                        // Obtener la lista de oradores desde la base de datos
+                        // Obtener la lista de registros desde la base de datos
                         List<Registro> registros = registrosDAO.obtenerTodos();
 
                         if (registros != null && !registros.isEmpty()) {
-                            // Iterar sobre la lista de oradores y mostrar sus datos en la tabla
+                            // Iterar sobre la lista de usuarios y mostrar sus datos en la tabla
                             for (Registro registro : registros) {
                     %>
                     <tr>
@@ -42,13 +53,30 @@
                         <td><%= registro.getContraseña()%></td>
                         <td><%= registro.getStatus()%></td>
                         <td><%= registro.getFechaRegistro()%></td>
+                        <td>
+                            <div class="d-flex">
+                                <!-- Formulario para actualizar -->
+                                <form action="gestion" method="post" class="mr-2">
+                                    <input type="hidden" name="accion" value="actualizar">
+                                    <input type="hidden" name="id" value="<%= registro.getId()%>">
+                                    <button type="submit" class="btn btn-warning btn-block">Actualizar</button>
+                                </form>
+
+                                <!-- Formulario para eliminar -->
+                                <form action="gestion" method="post">
+                                    <input type="hidden" name="accion" value="eliminar">
+                                    <input type="hidden" name="id" value="<%= registro.getId()%>">
+                                    <button type="submit" class="btn btn-danger btn-block">Eliminar</button>
+                                </form>
+                            </div>
+                        </td>
                     </tr>
                     <%
                         }
                     } else {
                     %>
                     <tr>
-                        <td colspan="5">No hay usuarios registrados.</td>
+                        <td colspan="6">No hay usuarios registrados.</td>
                     </tr>
                     <%
                         }

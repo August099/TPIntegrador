@@ -12,8 +12,7 @@ import util.ConexionDB;
 public class RegistrosDAO {
     public void agregarUsuario(Registro registro) {
         String sql = "INSERT INTO login (usuario, email, contraseña, fecha_registro, estado) VALUES (?, ?, ?, ?, ?)";
-        //bloque try-with-resources
-        //asegura que los recursos abiertos en su declaración (dentro de los paréntesis) se cierren automáticamente al final del bloque try 
+        
         try (Connection conn = ConexionDB.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -52,13 +51,32 @@ public class RegistrosDAO {
         return null;
     }
     
-    public String obtenerEstado(String usuario, String contraseña) {
-        String sql = "SELECT * FROM login WHERE usuario = ? and contraseña = ?";
+    public boolean obtenerPorNombre(String usuario) {
+        String sql = "SELECT * FROM login WHERE usuario = ?";
         try (Connection conn = ConexionDB.conectar();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, usuario);
-            pstmt.setString(2, contraseña);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    
+    public String obtenerEstado(String usuario) {
+        String sql = "SELECT * FROM login WHERE usuario = ?";
+        try (Connection conn = ConexionDB.conectar();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, usuario);
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
